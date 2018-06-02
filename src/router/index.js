@@ -90,46 +90,46 @@ export const constantRouterMap = [
     ]
   },
 
-  {
-    path: '/example',
-    component: Layout,
-    redirect: '/example/table',
-    name: 'Example',
-    meta: { title: 'Example', icon: 'tree' },
-    children: [
-      {
-        path: 'table',
-        name: 'Table',
-        component: () => import('@/views/table/index'),
-        meta: { title: 'Table', icon: 'table' }
-      },
-      {
-        path: 'form',
-        name: 'Form',
-        component: () => import('@/views/form/index'),
-        meta: { title: 'Form', icon: 'chart' }
-      },
-      {
-        path: 'tree',
-        name: 'Tree',
-        component: () => import('@/views/tree/index'),
-        meta: { title: 'Tree', icon: 'example' }
-      }
-    ]
-  },
+  // {
+  //   path: '/example',
+  //   component: Layout,
+  //   redirect: '/example/table',
+  //   name: 'Example',
+  //   meta: { title: 'Example', icon: 'tree' },
+  //   children: [
+  //     {
+  //       path: 'table',
+  //       name: 'Table',
+  //       component: () => import('@/views/table/index'),
+  //       meta: { title: 'Table', icon: 'table' }
+  //     },
+  //     {
+  //       path: 'form',
+  //       name: 'Form',
+  //       component: () => import('@/views/form/index'),
+  //       meta: { title: 'Form', icon: 'chart' }
+  //     },
+  //     {
+  //       path: 'tree',
+  //       name: 'Tree',
+  //       component: () => import('@/views/tree/index'),
+  //       meta: { title: 'Tree', icon: 'example' }
+  //     }
+  //   ]
+  // },
 
-  {
-    path: '/temptest',
-    component: Layout,
-    children: [
-      {
-        path: 'temptest',
-        name: 'Temptest',
-        component: () => import('@/views/question/temptest'),
-        meta: { title: '临时测试', icon: 'form' }
-      }
-    ]
-  },
+  // {
+  //   path: '/temptest',
+  //   component: Layout,
+  //   children: [
+  //     {
+  //       path: 'temptest',
+  //       name: 'Temptest',
+  //       component: () => import('@/views/question/temptest'),
+  //       meta: { title: '临时测试', icon: 'form' }
+  //     }
+  //   ]
+  // },
 
   { path: '*', redirect: '/404', hidden: true }
 ]

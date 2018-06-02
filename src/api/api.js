@@ -14,6 +14,11 @@ export const getDepartment = params => {
   return axios.get(`${baseUrl}/getDepartment`, { params: params })
 }
 
+// 按症状查科室Record
+export const getDepartmentRecord = params => {
+  return axios.get(`${baseUrl}/getDepartmentRecord`, { params: params })
+}
+
 // 常见健康问答
 export const getAnswer = params => {
   return axios.get(`${baseUrl}/getAnswer`, { params: params })

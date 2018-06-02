@@ -58,6 +58,7 @@
 
 <script>
   import { getAnswer } from '../../api/api'
+  import { setLog } from '../../api/log'
 
   export default {
     name: 'symptom',
@@ -80,6 +81,9 @@
           // console.log('d-res -->' + res.data.diseases)
           this.answer = res.data.answer
           this.recommend_question = res.data.recommend_question
+          setLog('健康咨询', this.inputValue).then().catch(err => {
+            console.log('setlog err -->' + err)
+          })
         }).then(err => {
           console.log(err)
         })

@@ -3,6 +3,7 @@
 
 **Live demo:** http://www.lhqs1314.cn/
 
+> 关联项目：https://github.com/lhqs/question-answer-server
 
 ## Build Setup
 

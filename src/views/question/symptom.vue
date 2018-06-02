@@ -90,6 +90,7 @@
 
 <script>
   import { getDepartment } from '../../api/api'
+  import { setLog } from '../../api/log'
 
   export default {
     name: 'symptom',
@@ -113,11 +114,15 @@
       searchDepartment() {
         this.isVisual = true
         const param = { q: this.inputValue }
+        // const logParams = { clickPage: '查询科室', operateContent: this.inputValue }
         getDepartment(param).then(res => {
           // console.log('d-res -->' + res.data.diseases)
           this.departments = res.data.departments
           this.diseases = res.data.diseases
-        }).then(err => {
+          setLog('症状科室', this.inputValue).then().catch(err => {
+            console.log('setlog err -->' + err)
+          })
+        }).catch(err => {
           console.log(err)
         })
       }
