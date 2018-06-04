@@ -10,7 +10,16 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+      '/ners': {
+        target: 'http://api.deepintell.net',
+        // target: 'http://localhost:8090',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/ners': ''
+        }
+      }
+    },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST

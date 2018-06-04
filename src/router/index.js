@@ -78,6 +78,19 @@ export const constantRouterMap = [
   },
 
   {
+    path: '/textAnalysis',
+    component: Layout,
+    children: [
+      {
+        path: 'textAnalysis',
+        name: 'TextAnalysis',
+        component: () => import('@/views/deepintell/ner'),
+        meta: { title: '文本分析', icon: 'analyse' }
+      }
+    ]
+  },
+
+  {
     path: '/logger',
     component: Layout,
     children: [

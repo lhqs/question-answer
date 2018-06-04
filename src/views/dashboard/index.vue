@@ -3,7 +3,7 @@
     <!--<div class="dashboard-text">name:{{name}}</div>
     <div class="dashboard-text">roles:<span v-for='role in roles' :key='role'>{{role}}</span></div>-->
     <div class="mainTitle">医疗健康问答系统首页</div>
-    <div class="doing">进行时</div>
+    <div class="doing">设计中与进行时。。。。</div>
   </div>
 </template>
 

@@ -81,7 +81,7 @@
       },
       getLogList() {
         getLog(this.pageNum, this.pageSize).then(res => {
-          console.log('reslog:' + res.data)
+          // console.log('reslog:' + res.data)
           this.logContent = res.data.list
           this.total = res.data.total
         }).catch(err => {
