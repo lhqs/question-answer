@@ -59,7 +59,7 @@ export const constantRouterMap = [
         path: 'symptom',
         name: 'Symptom',
         component: () => import('@/views/question/symptom'),
-        meta: { title: '症状科室', icon: 'consult' }
+        meta: { title: '症状科室', icon: 'hospital' }
       }
     ]
   },
@@ -85,20 +85,7 @@ export const constantRouterMap = [
         path: 'textAnalysis',
         name: 'TextAnalysis',
         component: () => import('@/views/deepintell/ner'),
-        meta: { title: '文本分析', icon: 'analyse' }
-      }
-    ]
-  },
-
-  {
-    path: '/logger',
-    component: Layout,
-    children: [
-      {
-        path: 'logger',
-        name: 'Logger',
-        component: () => import('@/views/question/logger'),
-        meta: { title: '操作日志', icon: 'browse' }
+        meta: { title: '文本分析', icon: 'distinguish' }
       }
     ]
   },
@@ -111,11 +98,23 @@ export const constantRouterMap = [
         path: 'insect',
         name: 'Insect',
         component: () => import('@/views/insect/insect'),
-        meta: { title: '昆虫识别', icon: 'form' }
+        meta: { title: '昆虫识别', icon: 'insect' }
       }
     ]
   },
 
+  {
+    path: '/logger',
+    component: Layout,
+    children: [
+      {
+        path: 'logger',
+        name: 'Logger',
+        component: () => import('@/views/question/logger'),
+        meta: { title: '操作日志', icon: 'log' }
+      }
+    ]
+  },
   // {
   //   path: '/example',
   //   component: Layout,

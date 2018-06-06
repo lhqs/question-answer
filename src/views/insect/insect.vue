@@ -1,6 +1,6 @@
 <template>
     <div class="insect-title">
-      <div class="upload-top">昆虫识别</div>
+      <div class="upload-top">昆虫识别PC端</div>
         <div class="upload-par">
           <el-upload
             class="upload-insect"
@@ -17,58 +17,47 @@
             <el-button slot="trigger" size="small" type="primary">选取图片</el-button>
           </el-upload>
         </div>
-        <div class="upload-par">
+      <div align="center" v-show="uploadUrl"><img :src="uploadUrl" width="400px" height="200px" style="margin: auto"/></div>
+        <div class="upload-par" v-show="uploadUrl">
           <el-button size="small" type="success" @click="submitUpload">开始识别</el-button>
         </div>
-      <div class="anslysis-title">识别结果</div>
-      <div class="result-show">
-        <el-row>
-          <el-col :span="8" v-for="(o, index) in 2" :key="o" :offset="index > 0 ? 2 : 0">
-            <el-card :body-style="{ padding: '0px' }">
-              <img src="http://qiniu.lhqs1314.cn/img/user/f8d14c460d4440.jpeg" class="image">
-              <div style="padding: 14px;">
-                <span>好吃的汉堡</span>
-                <div class="bottom clearfix">
-                  <time class="time">{{ currentDate }}</time>
-                  <el-button type="text" class="button">操作按钮</el-button>
-                </div>
-              </div>
-            </el-card>
-          </el-col>
-        </el-row>
-      </div>
-      <div class="result">
-        {{fileList}}
-      </div>
-      <hr>
-        <div class="result">
-          {{fileRes}}
+      <div class="is-tip" v-show="isTip">提示：你可能需要等待20-50秒,请稍后</div>
+      <div class="anslysis-title" v-show="isShow">识别结果</div>
+      <div class="result-show" v-show="isShow">
+        <div class="show" v-for="(index,item) in resList">
+          <div class="desc"><span class="row-line">描述：{{index.descpation}}</span><span class="row-line">相似度：{{index.rate}}</span> </div>
+          <span class="pic-show" align="center"><img :src=index.res[0] width="300px" height="180px" style="margin: auto"/></span>
+          <span class="pic-show" align="center"><img :src=index.res[1] width="300px" height="180px" style="margin: auto"/></span>
+          <span class="pic-show" align="center"><img :src=index.res[2] width="300px" height="180px" style="margin: auto"/></span>
         </div>
+      </div>
     </div>
 </template>
 
 <script>
-  // import { uploadLogeUrl } from '../../api/api'
   import { uploadLogeUrl } from '../../api/otherApi'
-
   export default {
     name: 'insect',
     data() {
       return {
         title: '',
+        uploadUrl: '',
         fileList: [],
-        fileRes: ''
+        fileRes: '',
+        resList: [],
+        isShow: false,
+        isTip: false
       }
     },
     methods: {
       submitUpload() {
         this.$refs.upload.submit()
+        this.isTip = true
       },
-      handleChange() {
-        console.log('handleChange')
+      handleChange(file) {
+        this.uploadUrl = file.url
       },
       handlePreview(file) {
-        console.log(file)
         this.fileList = file
       },
       handleRemove(file, fileList) {
@@ -78,8 +67,10 @@
         const fileData = new FormData()
         fileData.append('file', file)
         uploadLogeUrl(fileData).then(res => {
-          console.log('reso-->', res)
           this.fileRes = res.data.data
+          this.resList = res.data.data
+          this.isTip = false
+          this.isShow = true
         }).catch(err => {
           console.log(err)
         })
@@ -95,42 +86,40 @@
 }
   .upload-par{
     text-align: center;
-    margin: 15px auto 15px auto;
+    margin: 30px auto 15px auto;
   }
   .anslysis-title {
+    color:white;
     text-align: center;
     margin: auto;
-    background-color: #99a9bf;
-    width: 40%;
+    background-color: #5b5b5b;
+    width: 60%;
     padding: 12px;
   }
-.time {
-  font-size: 13px;
-  color: #999;
-}
+  .result-show {
+    text-align: center;
+    margin: 20px auto 20px auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 60%;
+    background-color: #d6d6d6;
+  }
+  .row-line {
+    /*margin-right: 25px;*/
+    margin: 20px 15px 10px 15px;
+  }
+  .pic-show{
+    padding: 10px;
+  }
+  .show {
+    margin: 20px 15px 10px 15px;
+  }
+  .desc {
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  .is-tip {
+    text-align: center;
+  }
 
-.bottom {
-  margin-top: 13px;
-  line-height: 12px;
-}
-
-.button {
-  padding: 0;
-  float: right;
-}
-
-.image {
-  width: 100%;
-  display: block;
-}
-
-.clearfix:before,
-.clearfix:after {
-  display: table;
-  content: "";
-}
-
-.clearfix:after {
-  clear: both
-}
 </style>
