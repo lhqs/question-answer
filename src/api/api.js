@@ -37,3 +37,6 @@ export const logintest = params => {
 export const getInfoTest = params => {
   return axios.post(`http://localhost:8099/api/getInfo`, params)
 }
+
+export const exportLogByTime = params => { return axios.get('http://localhost:8099/api/log/exportLogByTime', { params: params }) }
+export const exportCsvLogByTimeCsv = params => { return axios.get('http://localhost:8099/api/log/exportLogForCsv', { params: params }) }

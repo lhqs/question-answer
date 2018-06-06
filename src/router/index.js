@@ -103,6 +103,19 @@ export const constantRouterMap = [
     ]
   },
 
+  {
+    path: '/insect',
+    component: Layout,
+    children: [
+      {
+        path: 'insect',
+        name: 'Insect',
+        component: () => import('@/views/insect/insect'),
+        meta: { title: '昆虫识别', icon: 'form' }
+      }
+    ]
+  },
+
   // {
   //   path: '/example',
   //   component: Layout,

@@ -13,10 +13,23 @@ module.exports = {
     proxyTable: {
       '/ners': {
         target: 'http://api.deepintell.net',
-        // target: 'http://localhost:8090',
         changeOrigin: true,
         pathRewrite: {
           '^/ners': ''
+        }
+      },
+      '/services': {
+        target: 'http://ip.taobao.com',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/services': ''
+        }
+      },
+      '/insects': {
+        target: 'https://plant.lhqs1314.cn',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/insects': ''
         }
       }
     },

@@ -7,18 +7,25 @@
     <hr>
     <button @click="getIPAddr">click me for getIPAddr </button>
     <hr>
+    <button @click="getIPAddrTaoBao">click me for getIPAddr </button>
+    <hr>
+    <div>{{ipAddr}}</div>
+    <div>{{ipAddress}}</div>
   </div>
 </template>
 
 <script>
   import { getTemptest } from '../../api/api'
   import axios from 'axios'
+  import { getAddrByIp } from '../../api/otherApi'
 
   export default {
     name: 'temptest',
     data() {
       return {
-        ip: ''
+        ip: '',
+        ipAddr: '',
+        ipAddress: ''
       }
     },
     methods: {
@@ -39,12 +46,34 @@
       },
       getIPAddr() {
         // const ip = { ip: '61.153.48.135' }
-        axios.get('http://ip.taobao.com/service/getIpInfo.php', {
+        /* axios.get('http://ip.taobao.com/service/getIpInfo.php', { 'content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }, {
           params: { ip: '61.153.48.135' }
         }).then(function(response) {
           console.log(response)
         }).catch(function(response) {
           console.log(response)
+        })*/
+        const _this = this
+        axios.get('service/service/getIpInfo.php', {
+          // params: { ip: '61.153.48.135' }
+          params: { ip: '125.70.11.136' }
+        }).then(function(response) {
+          console.log(response.data.data)
+          const res = response.data.data
+          _this.ipAddr = res.country + '-' + res.city + '-' + res.region + '-' + res.isp
+        }).catch(function(response) {
+          console.log(response)
+        })
+      },
+      getIPAddrTaoBao() {
+        const param = { ip: '125.70.11.136' }
+        this.ipAddress = 'temp'
+        getAddrByIp(param).then(res => {
+          const data = res.data.data
+          console.log(data.country + '-' + data.city + '-' + data.region + '-' + data.isp)
+          this.ipAddress = res.country + '-' + res.city + '-' + res.region + '-' + res.isp
+        }).catch(err => {
+          console.log('err_getAddr:' + err)
         })
       }
     }

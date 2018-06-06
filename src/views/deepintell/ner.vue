@@ -22,7 +22,7 @@
 </template>
 
 <script>
-  import { getTextAnalysisRes } from '../../api/deepintell'
+  import { getTextAnalysisRes } from '../../api/otherApi'
   import { setLog } from '../../api/log'
   // import axios from 'axios'
 
