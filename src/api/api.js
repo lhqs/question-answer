@@ -3,6 +3,7 @@ import axios from 'axios'
 // let baseUrl = 'http://localhost:8011/api';
 // let baseUrl = 'http://plant.lhqs1314.cn:8011/api';
 const baseUrl = 'http://60.247.77.152:19003/api'
+const exportUrl = process.env.BASE_API
 
 // export const uploadLogeUrl = params => { return axios.post(`${baseUrl}/uploadOrgLogo`,  params)}
 export const uploadLogeUrl = params => {
@@ -38,5 +39,5 @@ export const getInfoTest = params => {
   return axios.post(`http://localhost:8099/api/getInfo`, params)
 }
 
-export const exportLogByTime = params => { return axios.get('http://localhost:8099/api/log/exportLogByTime', { params: params }) }
-export const exportCsvLogByTimeCsv = params => { return axios.get('http://localhost:8099/api/log/exportLogForCsv', { params: params }) }
+export const exportLogByTime = params => { return axios.get(`${exportUrl}/log/exportLogByTime`, { params: params }) }
+export const exportCsvLogByTimeCsv = params => { return axios.get(`${exportUrl}/log/exportLogForCsv`, { params: params }) }

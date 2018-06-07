@@ -175,7 +175,6 @@
       getLogList() {
         console.log(this.startTime, this.endTime)
         if (this.startTime === null || this.endTime === null || this.startTime === '' || this.endTime === '') {
-          console.log('1')
           getLog(this.pageNum, this.pageSize).then(res => {
             this.logContent = res.data.list
             this.total = res.data.total
@@ -183,7 +182,6 @@
             console.log('errLog:' + err)
           })
         } else {
-          console.log(2)
           getLoglistTime(this.pageNum, this.pageSize, utils.formatDate.format(this.startTime, 'yyyy-MM-dd hh:mm:ss'), utils.formatDate.format(this.endTime, 'yyyy-MM-dd hh:mm:ss')).then(res => {
             this.logContent = res.data.list
             this.total = res.data.total
@@ -215,7 +213,6 @@
         }
       },
       ExportCsv() {
-        console.log('csv')
         if (this.startTime === '' || this.endTime === '' || this.startTime === null || this.endTime === null) {
           this.$notify({
             title: '警告',

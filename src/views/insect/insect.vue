@@ -18,9 +18,9 @@
           </el-upload>
         </div>
       <div align="center" v-show="uploadUrl"><img :src="uploadUrl" width="400px" height="200px" style="margin: auto"/></div>
-        <div class="upload-par" v-show="uploadUrl">
-          <el-button size="small" type="success" @click="submitUpload">开始识别</el-button>
-        </div>
+      <div class="upload-par" v-show="uploadUrl">
+        <el-button size="small" type="success" @click="submitUpload">开始识别</el-button>
+      </div>
       <div class="is-tip" v-show="isTip">提示：你可能需要等待20-50秒,请稍后</div>
       <div class="anslysis-title" v-show="isShow">识别结果</div>
       <div class="result-show" v-show="isShow">
