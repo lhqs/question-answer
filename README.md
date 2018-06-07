@@ -1,7 +1,7 @@
 # question-answer
 
 
-**Live demo:** http://www.lhqs1314.cn/
+**项目预览地址:** http://w.lhqs1314.cn/
 
 > 关联项目：https://github.com/lhqs/question-answer-server
 
